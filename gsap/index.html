@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP</title>
+    <style>body{background-color: #424242;}</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <svg width="200" height="261" viewBox="0 0 200 261" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="f2">
+                <g id="frame1">
+                    <rect id="rect1" width="200" height="261" fill="#585656"/>
+                    <path id="rect2" d="M15 121.5C15 116.806 18.8056 113 23.5 113H83.5C88.1944 113 92 116.806 92 121.5C92 126.194 88.1944 130 83.5 130H23.5C18.8056 130 15 126.194 15 121.5Z" fill="#4799EB"/>
+                    <path id="rect4" d="M15 166.5C15 161.806 18.8056 158 23.5 158H174.5C179.194 158 183 161.806 183 166.5V166.5C183 171.194 179.194 175 174.5 175H23.5C18.8056 175 15 171.194 15 166.5V166.5Z" fill="#B0AEAE"/>
+                    <path id="rect5" d="M15 193.5C15 188.806 18.8056 185 23.5 185H116.5C121.194 185 125 188.806 125 193.5V193.5C125 198.194 121.194 202 116.5 202H23.5C18.8056 202 15 198.194 15 193.5V193.5Z" fill="#B0AEAE"/>
+                    <path id="rect6" d="M158 241C158 237.686 160.686 235 164 235H185C188.314 235 191 237.686 191 241V241C191 244.314 188.314 247 185 247H164C160.686 247 158 244.314 158 241V241Z" fill="white"/>
+                    <path id="rect7" d="M116 241C116 237.686 118.686 235 122 235H143C146.314 235 149 237.686 149 241V241C149 244.314 146.314 247 143 247H122C118.686 247 116 244.314 116 241V241Z" fill="#B0AEAE"/>
+                    <rect id="rect3" width="200" height="96" fill="#B0AEAE"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <script>
+        var t1 = gsap.timeline({defaults: {duration: .7, ease: Back.easeOut.config(2), opacity: 0}})
+        var t2 = gsap.timeline({defaults: {duration: 1.5, delay: 1}})
+        var t3 = gsap.timeline({defaults: {duration: 1.5}})
+        t1.from("#rect1", {delay: 1, scale: .2, transformOrigin: 'center'}, '=.2')
+        .from("#rect3", {scaleY: .2, transformOrigin: 'top'})
+        .from("#rect2", {scaleX: .1})
+        .from("#rect4", {scaleX: .1}, '-=.2')
+        .from("#rect5", {scaleX: .1}, '-=.3')
+        .from("#rect6", {scaleX: .1}, '-=.5')
+        .from("#rect7", {scaleX: .1}, '-=.7')
+        t2.to("#f2", {scale: 1.1,repeat: -1, yoyo: true})
+        t3.from("#fadeup", {y: 40, opacity: 1, stagger: .3})
+    </script>
+</body>
+</html>
