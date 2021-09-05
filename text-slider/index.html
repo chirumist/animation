@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Slider Animation</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <button type="button" id="next">Prev</button>
+    <button type="button" id="prev">Next</button>
+    <svg viewBox="0 0 1080 1080" height="500">
+        <path id="our-path" d="M252 913.69s.1-472.65 0-512c-.1-39.35 34.14-313.27 303.49-303.49 269.35 9.78 296.94 215.2 311.77 311.77 14.84 96.58 0 498.75 0 498.75s-553.39 10.01-575.28 0"/>
+        <text y="90" font-size="80" font-family="Arial" >
+            <textPath id="text-path" class="text" href="#our-path" startOffset="0%" word-spacing="300">
+                <tspan>Cristofer-Nolen</tspan>
+                <tspan>Ruso-Brother</tspan>
+                <tspan>Marvel-Universe</tspan>
+            </textPath>
+        </text>
+        <!-- <rect y="3%" x="38%" width="60%" height="90%" fill="white"></rect> -->
+    </svg>
+    <script>
+
+        const textPath = document.querySelector('#text-path')
+
+
+        function textPathOffset(elem, offset) {
+            elem.setAttribute('startOffset', offset)
+        }
+
+        let ammount = 0
+        let endAmount = -14
+        let behavior = true
+
+        function updatePath() {
+            requestAnimationFrame(() => {
+                textPathOffset(textPath, (window.scrollY * .5)+'%')
+                updatePath()
+            })
+        }
+
+
+        function nextSlide () {
+            if (ammount > endAmount) {
+                requestAnimationFrame(() => {
+                    textPathOffset(textPath, (ammount * 2)+'%')
+                    ammount -= .10
+                    nextSlide()
+                })
+            } else {
+                endAmount -= 15
+            }
+        }
+        function prevSlide () {
+            if (ammount < endAmount) {
+                requestAnimationFrame(() => {
+                    textPathOffset(textPath, (ammount * 2)+'%')
+                    ammount += .10
+                    prevSlide()
+                })
+            } else {
+                endAmount += 15
+            }
+        }
+        document.querySelector('#prev').addEventListener('click', () => {
+            nextSlide()
+        })
+        document.querySelector('#next').addEventListener('click', () => {
+            prevSlide()
+        })
+        window.addEventListener('scroll', updatePath)
+    </script>
+</body>
+</html>
