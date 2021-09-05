@@ -36,13 +36,6 @@
         let endAmount = -14
         let behavior = true
 
-        function updatePath() {
-            requestAnimationFrame(() => {
-                textPathOffset(textPath, (window.scrollY * .5)+'%')
-                updatePath()
-            })
-        }
-
 
         function nextSlide () {
             if (ammount > endAmount) {
@@ -72,7 +65,6 @@
         document.querySelector('#next').addEventListener('click', () => {
             prevSlide()
         })
-        // window.addEventListener('scroll', updatePath)
     </script>
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="page1">
+
+    <section>
+        <h1 class="anim">YO, you see this?</h1>
+    </section>
+    <section>
+        <img class="anim" src="./laptop.jpg" alt="laptop">
+        <h1 class="anim">It's Damm cool.</h1>
+    </section>
+    <section>
+        <h1 class="anim">I know i'm right.</h1>
+    </section>
+    <svg viewBox="0 0 500 500" width="500" height="500">
+        <path id="our-path" class="shp0" d="M24 476L24 19L480 19L480 475.04L35 475.04" fill="transparent" />
+        <text>
+            <textPath class="text" id="text-path" font-size="30" font-family="Helvetica, Arial" startOffset="0" href="#our-path">
+                <tspan>Please check our latest portfolio in github.</tspan>
+            </textPath>
+        </text>
+    </svg>
+
+    <script>
+
+        const textPath = document.querySelector('#text-path')
+
+
+        function textPathOffset(elem, offset) {
+            elem.setAttribute('startOffset', offset)
+        }
+
+        function updatePath() {
+            requestAnimationFrame(() => {
+                textPathOffset(textPath, window.scrollY * 1)
+            })
+        }
+        window.addEventListener('scroll', updatePath)
+        const titles = document.querySelectorAll('.anim')
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry =>{
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate')
+                } else {
+                    entry.target.classList.remove('animate')
+                }
+            })
+        })
+
+        titles.forEach((title) => {
+            observer.observe(title)
+        })
+    </script>
+</body>
+</html>
