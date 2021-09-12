@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(228, 228, 228);
+}
+h2 {
+    margin-bottom: 1.5rem;
+}
+p {
+    line-height: 1.5;
+}
+.clip-path1 {
+    cursor: pointer;
+    margin: 0 15px;
+    width: 33.33%;
+    background-color: #fff;
+    border-radius: .5rem;
+    position: relative;
+    background-image: url('https://picsum.photos/700/300');
+    background-size: cover;
+    background-repeat:no-repeat;
+    &:hover .clip-path1-body{
+        transition: clip-path 400ms ease-in-out;
+        clip-path: circle(100%);
+    }
+}
+.clip-path1-body {
+    border-radius: inherit;
+    background-color: orange;
+    clip-path: circle(12% at 0% 0%);
+    transition: clip-path 400ms ease-in-out;
+    color: #fff;
+    text-align: justify;
+    padding: 2rem;
+}
+.hover-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 6px;
+    left: 6px;
+    padding: 4px;
+    background-color: #fff;
+    color: orange;
+    border-radius: 50%;
+}
+
+.clip-path2 {
+    margin: 0 15px;
+    width: 33.33%;
+    background-color: transparent;
+    border-radius: .5rem;
+    position: relative;
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+.clip-path2-body {
+    cursor: pointer;
+    border-radius: inherit;
+    background-color: orange;
+    clip-path: circle(10% at 90% 23%);
+    transition: clip-path 400ms ease-in-out;
+    color: #fff;
+    text-align: justify;
+    padding: 2rem;
+    position: relative;
+    &:hover { 
+        transition: clip-path 400ms ease-in-out;
+        clip-path: circle(100%);
+        .hover-icon-2 {
+            opacity: 0;
+        }
+    }
+}
+.hover-icon-2{
+    transition: all 400ms ease;
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    width: 40px;
+    color: #fff;
+    border-radius: 50%;
+}

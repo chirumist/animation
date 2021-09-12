@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+    <link rel="stylesheet" href="./style2.css">
+</head>
+<body>
+    <section>
+        <ul>
+            <li class="scroll" data-rate="-1.5">PAR</li>
+            <li>AL</li>
+            <li class="scroll" data-rate="1.5">LAX</li>
+        </ul>
+    </section>
+    <section>
+        <span class="scroll" style="display: block; width: 100%;" data-ratey="-1.5" data-ratex="1.5" data-dir="horizontal">Motion Graphic</span>
+    </section>
+    <script>
+        window.addEventListener('scroll',(e) => {
+            let elems = document.querySelectorAll('.scroll')
+            console.log()
+            Array.from(elems, (elem) => {
+                const dir = elem.dataset.dir
+                if (dir === 'horizontal') {
+                    const xValue = window.pageYOffset * elem.dataset.ratex
+                    const yValue = window.pageYOffset * elem.dataset.ratey
+                    elem.style.transform = `translate3d(${xValue}px, ${yValue}px, 0)`
+                } else {
+                    const value = window.pageYOffset * elem.dataset.rate
+                    elem.style.transform = `translate3d(0px, ${value}px, 0)`
+                }
+            })
+        })
+    </script>
+</body>
+</html>
