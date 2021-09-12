@@ -10,6 +10,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -88,13 +92,11 @@ p {
 .clip-path2-body {
   cursor: pointer;
   border-radius: inherit;
-  background-color: orange;
+  background-color: green;
   -webkit-clip-path: circle(10% at 90% 23%);
           clip-path: circle(10% at 90% 23%);
-  -webkit-transition: -webkit-clip-path 400ms ease-in-out;
-  transition: -webkit-clip-path 400ms ease-in-out;
-  transition: clip-path 400ms ease-in-out;
-  transition: clip-path 400ms ease-in-out, -webkit-clip-path 400ms ease-in-out;
+  -webkit-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
   color: #fff;
   text-align: justify;
   padding: 2rem;
@@ -102,10 +104,9 @@ p {
 }
 
 .clip-path2-body:hover {
-  -webkit-transition: -webkit-clip-path 400ms ease-in-out;
-  transition: -webkit-clip-path 400ms ease-in-out;
-  transition: clip-path 400ms ease-in-out;
-  transition: clip-path 400ms ease-in-out, -webkit-clip-path 400ms ease-in-out;
+  background-color: orange;
+  -webkit-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
   -webkit-clip-path: circle(100%);
           clip-path: circle(100%);
 }
